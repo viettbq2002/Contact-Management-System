@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Authenticate } from "../types/auth.type";
+import { getUser } from "../utils/auth.utils";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const http = axios.create();
 
@@ -7,13 +7,6 @@ http.defaults.baseURL = "https://localhost:7158/api";
 
 http.interceptors.request.use(
   (config) => {
-    const getUser = () => {
-      const user = localStorage.getItem("authenticated");
-      if (user !== null) {
-        return JSON.parse(user) as Authenticate;
-      }
-      return null;
-    };
     const user = getUser();
 
     const token = user?.accessToken;

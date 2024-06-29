@@ -3,6 +3,8 @@ import RootLayout from "./layouts/RootLayout";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import LoginedLayout from "./layouts/LoginedLayout";
+import Contact from "./pages/Contact";
 const routeList: RouteObject[] = [
   {
     element: <RootLayout />,
@@ -18,6 +20,15 @@ const routeList: RouteObject[] = [
       {
         path: "/register",
         element: <Register />,
+      },
+    ],
+  },
+  {
+    element: <LoginedLayout />,
+    children: [
+      {
+        path: "/contact",
+        element: <Contact />,
       },
     ],
   },
