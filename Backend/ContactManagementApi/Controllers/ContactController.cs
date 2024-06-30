@@ -7,7 +7,6 @@ using AutoMapper;
 using DataAccess.IRepository;
 using ContactManagementApi.DTO.Contact;
 using BussinessLogic.Models;
-using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 namespace ContactManagementApi.Controllers
 {
@@ -17,6 +16,7 @@ namespace ContactManagementApi.Controllers
     public class ContactController : ControllerBase
     {
         private readonly IContactRepository _contactRepository;
+
         private readonly IMapper _mapper;
 
         public ContactController(IContactRepository contactRepository, IMapper mapper)
@@ -37,6 +37,12 @@ namespace ContactManagementApi.Controllers
         {
             var contact = await _contactRepository.GetContactByIdAsync(id);
             return Ok(contact);
+        }
+        [HttpDelete("{contactId}")]
+        public async Task<IActionResult> DeleteContact(int contactId)
+        {
+            await _contactRepository.DeleteContactAsync(contactId);
+            return Ok(new { Message = "Contact deleted successfully" });
         }
         [HttpPost]
         [Authorize]

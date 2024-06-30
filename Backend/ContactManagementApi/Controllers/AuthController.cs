@@ -59,14 +59,14 @@ namespace ContactManagementApi.Controllers
 
             await _userRepository.CreateUserAsync(newUser);
 
-
+            
             return Ok(new
             {
                 Message = "Register Successfully"
             });
 
         }
-      
+
 
     }
 }

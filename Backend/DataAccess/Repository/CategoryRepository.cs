@@ -4,34 +4,56 @@ using System.Linq;
 using System.Threading.Tasks;
 using BussinessLogic.Models;
 using DataAccess.IRepository;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Repository
 {
-    public class CategoryRepository : ICateogryRepository
+    public class CategoryRepository : ICategoryRepository
     {
-        public Task<Category> CreateCategoryAsync(Category category)
+        private readonly ContactManagmentContext _context;
+
+        public CategoryRepository(ContactManagmentContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public Task<Category> DeleteCategoryAsync(int id)
+
+        public async Task<Category> CreateCategoryAsync(Category category)
         {
-            throw new NotImplementedException();
+            await _context.Categories.AddAsync(category);
+            await _context.SaveChangesAsync();
+            return category;
+
+
         }
 
-        public Task<List<Category>> GetCategoriesAsync()
+        public async Task DeleteCategoryAsync(int id)
         {
-            throw new NotImplementedException();
+            var category = new Category { CategoryId = id };
+            _context.Categories.Attach(category);
+            _context.Categories.Remove(category);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<Category> GetCategoryByIdAsync(int id)
+        public async Task<List<Category>> GetCategoriesByUserAsync(Guid userId)
         {
-            throw new NotImplementedException();
+            var listCategory = await _context.Categories.Where(x => x.UserId == userId).Include(x => x.Contacts).ToListAsync();
+            return listCategory;
+
         }
 
-        public Task<Category> UpdateCategoryAsync(Category category)
+        public async Task<Category?> GetCategoryByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var category = await _context.Categories.Where(x => x.CategoryId == id).FirstOrDefaultAsync();
+            return category;
+        }
+
+        public async Task<Category> UpdateCategoryAsync(Category category)
+        {
+            _context.Categories.Update(category);
+            await _context.SaveChangesAsync();
+            return category;
+
         }
     }
 }

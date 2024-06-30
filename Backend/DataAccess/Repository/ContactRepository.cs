@@ -24,14 +24,18 @@ namespace DataAccess.Repository
             return contact;
         }
 
-        public Task DeleteContactAsync(Contact contact)
+        public async Task DeleteContactAsync(int contactId)
         {
-            throw new NotImplementedException();
+            var contact = new Contact { ContactId = contactId };
+            _context.Contacts.Attach(contact);
+            _context.Contacts.Remove(contact);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<Contact> GetContactByIdAsync(int id)
+        public async Task<Contact?> GetContactByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var contact = await _context.Contacts.Where(x => x.ContactId == id).FirstOrDefaultAsync();
+            return contact;
         }
 
         public async Task<List<Contact>> GetContactsAsync()
@@ -42,7 +46,7 @@ namespace DataAccess.Repository
 
         public async Task<List<Contact>> GetContactsByUserIdAsync(Guid userId)
         {
-            var listContact = await _context.Contacts.Where(x => x.UserId == userId).ToListAsync();
+            var listContact = await _context.Contacts.Where(x => x.UserId == userId).Include(x => x.Categories).ToListAsync();
             return listContact;
         }
 

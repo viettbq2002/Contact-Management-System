@@ -6,18 +6,19 @@ using BussinessLogic.Models;
 
 namespace DataAccess.IRepository
 {
-    public interface ICateogryRepository
+    public interface ICategoryRepository
     {
 
-        Task<List<Category>> GetCategoriesAsync();
+        Task<List<Category>> GetCategoriesByUserAsync(Guid userId);
 
-        Task<Category> GetCategoryByIdAsync(int id);
+        Task<Category?> GetCategoryByIdAsync(int id);
 
         Task<Category> CreateCategoryAsync(Category category);
 
         Task<Category> UpdateCategoryAsync(Category category);
 
-        Task<Category> DeleteCategoryAsync(int id);
+        Task DeleteCategoryAsync(int id);
+
 
 
     }

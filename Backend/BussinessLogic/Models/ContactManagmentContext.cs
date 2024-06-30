@@ -20,17 +20,14 @@ namespace BussinessLogic.Models
         public virtual DbSet<Contact> Contacts { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
 
-    
-
+      
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Category>(entity =>
             {
                 entity.ToTable("Category");
 
-                entity.Property(e => e.CategoryId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("category_id");
+                entity.Property(e => e.CategoryId).HasColumnName("category_id");
 
                 entity.Property(e => e.CategoryName).HasColumnName("category_name");
 

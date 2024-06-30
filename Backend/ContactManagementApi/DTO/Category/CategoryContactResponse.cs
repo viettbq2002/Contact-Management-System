@@ -2,14 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
 
-namespace ContactManagementApi.DTO.Contact
+namespace ContactManagementApi.DTO.Category
 {
-    public class ContactResponse
+    public class CategoryContactResponse
     {
         public int ContactId { get; set; }
-        public Guid UserId { get; set; }
         public string Phone { get; set; } = null!;
         public string FullName { get; set; } = null!;
         public string? CompanyName { get; set; }
@@ -22,6 +20,6 @@ namespace ContactManagementApi.DTO.Contact
         public DateTime? BirthDate { get; set; }
         public string? Position { get; set; }
         public string? Note { get; set; }
-        public List<ContactCategoryResponse> Categories { get; set; } = new List<ContactCategoryResponse>();
+
     }
 }

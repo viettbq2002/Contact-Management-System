@@ -11,9 +11,9 @@ namespace DataAccess.IRepository
         Task<Contact> CreateContactAsync(Contact contact);
         Task UpdateContactAsync(Contact contact);
         Task<List<Contact>> GetContactsAsync();
-        Task<Contact> GetContactByIdAsync(int id);
+        Task<Contact?> GetContactByIdAsync(int id);
 
-        Task DeleteContactAsync(Contact contact);
+        Task DeleteContactAsync(int contactId);
 
         Task<List<Contact>> GetContactsByUserIdAsync(Guid userId);
 

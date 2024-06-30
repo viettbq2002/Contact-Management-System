@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BussinessLogic.Models;
 using ContactManagementApi.DTO.Auth;
+using ContactManagementApi.DTO.Category;
 using ContactManagementApi.DTO.Contact;
 
 namespace ContactManagementApi.Helpers
@@ -20,6 +21,9 @@ namespace ContactManagementApi.Helpers
             CreateMap<ContactResponse, Contact>().ReverseMap();
             CreateMap<ContactCategoryResponse, Category>().ReverseMap();
             CreateMap<Category, ContactCategoryResponse>().ReverseMap();
+            CreateMap<Category, CategoryResponse>().ReverseMap();
+            CreateMap<Contact, CategoryContactResponse>().ReverseMap();
+            CreateMap<Category, CreateCategoryRequest>().ReverseMap();
         }
 
     }

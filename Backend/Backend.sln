@@ -5,9 +5,9 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BussinessLogic", "BussinessLogic\BussinessLogic.csproj", "{C13192F8-4DA8-4D8A-89FF-A5F4595010C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManagementApi", "ContactManagementApi\ContactManagementApi.csproj", "{AB38529D-1C45-47E3-B25E-D7310A2FAFFB}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{F96AAA41-3016-437F-9DAD-8C2041C51B37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManagementApi", "ContactManagementApi\ContactManagementApi.csproj", "{42F8AAE1-6CDE-4C00-A97C-AB7F20CE8CA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,13 +22,13 @@ Global
 		{C13192F8-4DA8-4D8A-89FF-A5F4595010C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C13192F8-4DA8-4D8A-89FF-A5F4595010C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C13192F8-4DA8-4D8A-89FF-A5F4595010C0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AB38529D-1C45-47E3-B25E-D7310A2FAFFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AB38529D-1C45-47E3-B25E-D7310A2FAFFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AB38529D-1C45-47E3-B25E-D7310A2FAFFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AB38529D-1C45-47E3-B25E-D7310A2FAFFB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F96AAA41-3016-437F-9DAD-8C2041C51B37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F96AAA41-3016-437F-9DAD-8C2041C51B37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F96AAA41-3016-437F-9DAD-8C2041C51B37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F96AAA41-3016-437F-9DAD-8C2041C51B37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42F8AAE1-6CDE-4C00-A97C-AB7F20CE8CA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42F8AAE1-6CDE-4C00-A97C-AB7F20CE8CA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42F8AAE1-6CDE-4C00-A97C-AB7F20CE8CA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42F8AAE1-6CDE-4C00-A97C-AB7F20CE8CA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
