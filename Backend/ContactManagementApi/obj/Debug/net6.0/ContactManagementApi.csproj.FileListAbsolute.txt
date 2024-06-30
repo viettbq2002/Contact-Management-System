@@ -73,3 +73,4 @@ C:\Users\thaib\VietWorking\ContactManagementSystem\Backend\ContactManagementApi\
 C:\Users\thaib\VietWorking\ContactManagementSystem\Backend\ContactManagementApi\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\thaib\VietWorking\ContactManagementSystem\Backend\ContactManagementApi\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
 C:\Users\thaib\VietWorking\ContactManagementSystem\Backend\ContactManagementApi\bin\Debug\net6.0\BCrypt.Net-Next.dll
+C:\Users\thaib\VietWorking\ContactManagementSystem\Backend\ContactManagementApi\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

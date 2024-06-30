@@ -19,7 +19,7 @@ namespace ContactManagementApi.Helpers
             CreateMap<CreateContactRequest, Contact>().ReverseMap();
             CreateMap<ContactResponse, Contact>().ReverseMap();
             CreateMap<ContactCategoryResponse, Category>().ReverseMap();
-            CreateMap<Category, CategoryResponse>().ReverseMap();
+            CreateMap<Category, ContactCategoryResponse>().ReverseMap();
         }
 
     }

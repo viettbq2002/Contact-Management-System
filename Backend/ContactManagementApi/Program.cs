@@ -5,7 +5,9 @@ using ContactManagementApi.Service;
 using DataAccess.IRepository;
 using DataAccess.Repository;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -27,6 +29,28 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IContactRepository, ContactRepository>();
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection(JwtSettings.SectionName));
 
+builder.Services
+    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.IncludeErrorDetails = true; // Default: true
+
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            // Let "sub" assign to User.Identity.Name
+            // Let "roles" assign to Roles for [Authorized] attributes
+
+            ValidateIssuer = false,
+
+            ValidateAudience = false,
+
+            ValidateLifetime = true,
+
+            ValidateIssuerSigningKey = true,
+
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetValue<string>("JwtSettings:Secret")))
+        };
+    });
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

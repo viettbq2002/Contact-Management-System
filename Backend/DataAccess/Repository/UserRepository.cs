@@ -51,7 +51,9 @@ namespace DataAccess.Repository
 
         public async Task<User> UpdateUserAsync(User user)
         {
-            throw new NotImplementedException();
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+            return user;
         }
     }
 }

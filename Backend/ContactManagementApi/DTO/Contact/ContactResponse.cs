@@ -23,6 +23,6 @@ namespace ContactManagementApi.DTO.Contact
         public string? Position { get; set; }
         public string? Note { get; set; }
         [JsonPropertyName("categories")]
-        public List<ContactCategoryResponse> ContactCategories { get; set; }
+        public List<ContactCategoryResponse> ContactCategories { get; set; } = new List<ContactCategoryResponse>();
     }
 }
