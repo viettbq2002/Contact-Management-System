@@ -3,7 +3,9 @@ import { useForm } from "@mantine/form";
 import AuthApiRequest from "../../api/auth-api";
 import { LoginPayload } from "../../types/auth.type";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 const LoginForm = () => {
+  const navigate = useNavigate();
   const form = useForm<LoginPayload>({
     mode: "uncontrolled",
     initialValues: {
@@ -20,6 +22,8 @@ const LoginForm = () => {
       const response = await AuthApiRequest.login(payload);
       const { data } = response;
       localStorage.setItem("authenticated", JSON.stringify(data));
+      navigate(`/contact/${data.id}`);
+
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       if (error.response.data.message) {

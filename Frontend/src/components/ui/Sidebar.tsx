@@ -1,13 +1,22 @@
 import { Button, Group } from "@mantine/core";
-import { Icon2fa, IconAddressBook, IconDatabaseImport, IconFingerprint, IconKey, IconLogout, IconReceipt2, IconSettings } from "@tabler/icons-react";
+import {
+  Icon2fa,
+  IconAddressBook,
+  IconDatabaseImport,
+  IconFingerprint,
+  IconKey,
+  IconLogout,
+  IconPlus,
+  IconSettings
+} from "@tabler/icons-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import classes from "../../style/Sidebar.module.css";
 import { UserButton } from "./UserButton";
-import { useNavigate } from "react-router-dom";
 
 const data = [
   { link: "", label: "Contact", icon: IconAddressBook },
-  { link: "", label: "Add Contact", icon: IconReceipt2 },
+  { link: "", label: "Add Contact", icon: IconPlus },
   { link: "", label: "Advanced Filtering", icon: IconFingerprint },
   { link: "", label: "SSH Keys", icon: IconKey },
   { link: "", label: "Databases", icon: IconDatabaseImport },

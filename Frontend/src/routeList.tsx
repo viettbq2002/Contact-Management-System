@@ -27,7 +27,7 @@ const routeList: RouteObject[] = [
     element: <LoginedLayout />,
     children: [
       {
-        path: "/contact",
+        path: "/contact/:userId",
         element: <Contact />,
       },
     ],

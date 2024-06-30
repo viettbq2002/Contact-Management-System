@@ -7,6 +7,7 @@ namespace BussinessLogic.Models
     {
         public User()
         {
+            Categories = new HashSet<Category>();
             Contacts = new HashSet<Contact>();
         }
 
@@ -18,6 +19,7 @@ namespace BussinessLogic.Models
         public string Phone { get; set; } = null!;
         public string HashedPassword { get; set; } = null!;
 
+        public virtual ICollection<Category> Categories { get; set; }
         public virtual ICollection<Contact> Contacts { get; set; }
     }
 }

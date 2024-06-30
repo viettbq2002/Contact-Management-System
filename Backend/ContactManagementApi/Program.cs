@@ -24,6 +24,7 @@ builder.Services.AddDbContext<ContactManagmentContext>(options => options.UseSql
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IJwtGenerator, JwtGenerator>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IContactRepository, ContactRepository>();
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection(JwtSettings.SectionName));
 
 var app = builder.Build();

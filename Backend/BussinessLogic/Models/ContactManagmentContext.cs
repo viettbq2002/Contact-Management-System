@@ -20,7 +20,7 @@ namespace BussinessLogic.Models
         public virtual DbSet<Contact> Contacts { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
 
-
+    
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -35,6 +35,14 @@ namespace BussinessLogic.Models
                 entity.Property(e => e.CategoryName).HasColumnName("category_name");
 
                 entity.Property(e => e.Description).HasColumnName("description");
+
+                entity.Property(e => e.UserId).HasColumnName("user_id");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Categories)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Category_User");
 
                 entity.HasMany(d => d.Contacts)
                     .WithMany(p => p.Categories)

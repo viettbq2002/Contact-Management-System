@@ -8,7 +8,7 @@ namespace DataAccess.IRepository
 {
     public interface IContactRepository
     {
-        Task CreateContactAsync(Contact contact);
+        Task<Contact> CreateContactAsync(Contact contact);
         Task UpdateContactAsync(Contact contact);
         Task<List<Contact>> GetContactsAsync();
         Task<Contact> GetContactByIdAsync(Guid id);
