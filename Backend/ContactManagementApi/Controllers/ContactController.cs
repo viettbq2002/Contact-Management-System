@@ -7,9 +7,11 @@ using AutoMapper;
 using DataAccess.IRepository;
 using ContactManagementApi.DTO.Contact;
 using BussinessLogic.Models;
-
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 namespace ContactManagementApi.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
     [ApiController]
     [Route("api/Contacts")]
     public class ContactController : ControllerBase
@@ -23,25 +25,41 @@ namespace ContactManagementApi.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetContacts()
+        [HttpGet("{userId}")]
+        public async Task<IActionResult> GetContacts(Guid userId)
         {
-            var contacts = await _contactRepository.GetContactsAsync();
+            var contacts = await _contactRepository.GetContactsByUserIdAsync(userId);
             var response = _mapper.Map<List<ContactResponse>>(contacts);
             return Ok(response);
         }
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetContactById(Guid id)
+        [HttpGet("{contactId}/details")]
+        public async Task<IActionResult> GetContactById(int id)
         {
             var contact = await _contactRepository.GetContactByIdAsync(id);
             return Ok(contact);
         }
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> CreateContact([FromBody] CreateContactRequest request)
         {
+            var userId = GetCurrentUserId();
+            if (userId == null)
+            {
+                return Unauthorized(new { Message = "Unauthorized, Please login" });
+            }
             var contact = _mapper.Map<Contact>(request);
+            contact.UserId = (Guid)userId;
             await _contactRepository.CreateContactAsync(contact);
-            return Ok();
+            return Ok(new { Message = "Contact created successfully" });
+        }
+        private Guid? GetCurrentUserId()
+        {
+            var userIdString = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+            if (userIdString == null)
+                return null;
+            var currentUserId = Guid.Parse(userIdString.Value);
+            return currentUserId;
+
         }
     }
 }

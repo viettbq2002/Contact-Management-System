@@ -29,7 +29,7 @@ namespace DataAccess.Repository
             throw new NotImplementedException();
         }
 
-        public Task<Contact> GetContactByIdAsync(Guid id)
+        public Task<Contact> GetContactByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
@@ -40,9 +40,10 @@ namespace DataAccess.Repository
             return listContact;
         }
 
-        public Task<List<Contact>> GetContactsByUserIdAsync(Guid userId)
+        public async Task<List<Contact>> GetContactsByUserIdAsync(Guid userId)
         {
-            throw new NotImplementedException();
+            var listContact = await _context.Contacts.Where(x => x.UserId == userId).ToListAsync();
+            return listContact;
         }
 
         public Task UpdateContactAsync(Contact contact)

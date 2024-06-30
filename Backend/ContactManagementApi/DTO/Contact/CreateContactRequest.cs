@@ -7,7 +7,6 @@ namespace ContactManagementApi.DTO.Contact
 {
     public class CreateContactRequest
     {
-        public Guid UserId { get; set; }
         public string Phone { get; set; } = null!;
         public string FullName { get; set; } = null!;
         public string? CompanyName { get; set; }
