@@ -1,28 +1,22 @@
 import { Button, Group } from "@mantine/core";
-import { Icon2fa, IconAddressBook, IconDatabaseImport, IconFingerprint, IconKey, IconLogout, IconPlus, IconSettings } from "@tabler/icons-react";
+import { Icon2fa, IconAddressBook, IconDatabaseImport, IconKey, IconLogout, IconSettings } from "@tabler/icons-react";
 import { Link, useNavigate } from "react-router-dom";
 import classes from "../../style/Sidebar.module.css";
-import { getUser } from "../../utils/auth.utils";
+import NavLinkGroup from "./NavbarLinkGroup";
 import { UserButton } from "./UserButton";
 
-const user = getUser();
-if (!user) {
-  window.location.href = "/login";
-}
-const data = [
-  { link: `/contacts/${user?.id}`, label: "Contact", icon: IconAddressBook },
-  { link: "/contacts/create", label: "Add Contact", icon: IconPlus },
-  { link: "", label: "Advanced Filtering", icon: IconFingerprint },
-  { link: "", label: "SSH Keys", icon: IconKey },
-  { link: "", label: "Databases", icon: IconDatabaseImport },
-  { link: "", label: "Authentication", icon: Icon2fa },
-  { link: "", label: "Other Settings", icon: IconSettings },
-];
 interface SidebarProps {
   handleClose: () => void;
 }
 
 export function Sidebar({ handleClose }: SidebarProps) {
+  const data = [
+    { link: `/contacts`, label: "All contacts", icon: IconAddressBook },
+    { link: "", label: "SSH Keys", icon: IconKey },
+    { link: "", label: "Databases", icon: IconDatabaseImport },
+    { link: "", label: "Authentication", icon: Icon2fa },
+    { link: "", label: "Other Settings", icon: IconSettings },
+  ];
   const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("authenticated");
@@ -42,7 +36,7 @@ export function Sidebar({ handleClose }: SidebarProps) {
         <Group className={classes.header}>
           <UserButton />
         </Group>
-
+        <NavLinkGroup />
         {links}
         <Button hiddenFrom="sm" onClick={handleClose} fullWidth mt="md">
           Close

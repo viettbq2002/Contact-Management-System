@@ -16,6 +16,7 @@ namespace DataAccess.IRepository
         Task DeleteContactAsync(int contactId);
 
         Task<List<Contact>> GetContactsByUserIdAsync(Guid userId);
+        Task<List<Contact>> GetContactsByCategoryIdAsync(int categoryId);
 
     }
 }

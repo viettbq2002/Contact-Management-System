@@ -44,10 +44,11 @@ namespace ContactManagementApi.Controllers
             return Ok(response);
         }
         [HttpGet("{categoryId}/details")]
-        public async Task<IActionResult> GetCategoryById(int id)
+        public async Task<IActionResult> GetCategoryById(int categoryId)
         {
-            var category = await _categoryRepository.GetCategoryByIdAsync(id);
-            return Ok(category);
+            var category = await _categoryRepository.GetCategoryByIdAsync(categoryId);
+            var resposne = _mapper.Map<CategoryResponse>(category);
+            return Ok(resposne);
         }
         [HttpPost]
         [Authorize]

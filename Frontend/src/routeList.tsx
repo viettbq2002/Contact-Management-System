@@ -1,11 +1,11 @@
 import { RouteObject } from "react-router-dom";
+import LoginedLayout from "./layouts/LoginedLayout";
 import RootLayout from "./layouts/RootLayout";
+import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import LoginedLayout from "./layouts/LoginedLayout";
-import Contact from "./pages/Contact";
-import CreateContact from "./pages/CreateContact";
+import ContactByCategory from "./pages/ContactByCategory";
 const routeList: RouteObject[] = [
   {
     element: <RootLayout />,
@@ -28,12 +28,12 @@ const routeList: RouteObject[] = [
     element: <LoginedLayout />,
     children: [
       {
-        path: "/contacts/:userId",
+        path: "/contacts",
         element: <Contact />,
       },
       {
-        path: "/contacts/create",
-        element: <CreateContact />,
+        path: "/category/:categoryId",
+        element: <ContactByCategory />,
       },
     ],
   },

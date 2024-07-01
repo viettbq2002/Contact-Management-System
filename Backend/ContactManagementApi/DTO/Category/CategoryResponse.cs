@@ -11,7 +11,6 @@ namespace ContactManagementApi.DTO.Category
         public int CategoryId { get; set; }
         public string CategoryName { get; set; } = null!;
         public string? Description { get; set; }
-        public Guid UserId { get; set; }
 
         public List<CategoryContactResponse> Contacts { get; set; } = new List<CategoryContactResponse>();
     }

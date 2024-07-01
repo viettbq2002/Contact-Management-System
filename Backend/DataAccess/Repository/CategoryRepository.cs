@@ -37,14 +37,14 @@ namespace DataAccess.Repository
 
         public async Task<List<Category>> GetCategoriesByUserAsync(Guid userId)
         {
-            var listCategory = await _context.Categories.Where(x => x.UserId == userId).Include(x => x.Contacts).ToListAsync();
+            var listCategory = await _context.Categories.Where(x => x.UserId == userId).ToListAsync();
             return listCategory;
 
         }
 
         public async Task<Category?> GetCategoryByIdAsync(int id)
         {
-            var category = await _context.Categories.Where(x => x.CategoryId == id).FirstOrDefaultAsync();
+            var category = await _context.Categories.Where(x => x.CategoryId == id).Include(x => x.Contacts).FirstOrDefaultAsync();
             return category;
         }
 

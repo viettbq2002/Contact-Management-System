@@ -44,9 +44,14 @@ namespace DataAccess.Repository
             return listContact;
         }
 
+        public async Task<List<Contact>> GetContactsByCategoryIdAsync(int categoryId)
+        {
+            return await _context.Contacts.Where(x => x.Categories.Any(c => c.CategoryId == categoryId)).ToListAsync();
+        }
+
         public async Task<List<Contact>> GetContactsByUserIdAsync(Guid userId)
         {
-            var listContact = await _context.Contacts.Where(x => x.UserId == userId).Include(x => x.Categories).ToListAsync();
+            var listContact = await _context.Contacts.Where(x => x.UserId == userId).ToListAsync();
             return listContact;
         }
 
