@@ -50,9 +50,11 @@ namespace DataAccess.Repository
             return listContact;
         }
 
-        public Task UpdateContactAsync(Contact contact)
+        public async Task UpdateContactAsync(Contact contact)
         {
-            throw new NotImplementedException();
+            _context.Contacts.Update(contact);
+            await _context.SaveChangesAsync();
+
         }
     }
 }

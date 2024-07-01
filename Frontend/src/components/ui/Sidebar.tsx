@@ -1,22 +1,17 @@
 import { Button, Group } from "@mantine/core";
-import {
-  Icon2fa,
-  IconAddressBook,
-  IconDatabaseImport,
-  IconFingerprint,
-  IconKey,
-  IconLogout,
-  IconPlus,
-  IconSettings
-} from "@tabler/icons-react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Icon2fa, IconAddressBook, IconDatabaseImport, IconFingerprint, IconKey, IconLogout, IconPlus, IconSettings } from "@tabler/icons-react";
+import { Link, useNavigate } from "react-router-dom";
 import classes from "../../style/Sidebar.module.css";
+import { getUser } from "../../utils/auth.utils";
 import { UserButton } from "./UserButton";
 
+const user = getUser();
+if (!user) {
+  window.location.href = "/login";
+}
 const data = [
-  { link: "", label: "Contact", icon: IconAddressBook },
-  { link: "", label: "Add Contact", icon: IconPlus },
+  { link: `/contacts/${user?.id}`, label: "Contact", icon: IconAddressBook },
+  { link: "/contacts/create", label: "Add Contact", icon: IconPlus },
   { link: "", label: "Advanced Filtering", icon: IconFingerprint },
   { link: "", label: "SSH Keys", icon: IconKey },
   { link: "", label: "Databases", icon: IconDatabaseImport },
@@ -28,7 +23,6 @@ interface SidebarProps {
 }
 
 export function Sidebar({ handleClose }: SidebarProps) {
-  const [active, setActive] = useState("Billing");
   const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("authenticated");
@@ -36,19 +30,10 @@ export function Sidebar({ handleClose }: SidebarProps) {
   };
 
   const links = data.map((item) => (
-    <a
-      className={classes.link}
-      data-active={item.label === active || undefined}
-      href={item.link}
-      key={item.label}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(item.label);
-      }}
-    >
+    <Link to={item.link} className={classes.link} key={item.label}>
       <item.icon className={classes.linkIcon} stroke={1.5} />
       <span>{item.label}</span>
-    </a>
+    </Link>
   ));
 
   return (

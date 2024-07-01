@@ -58,6 +58,21 @@ namespace ContactManagementApi.Controllers
             await _contactRepository.CreateContactAsync(contact);
             return Ok(new { Message = "Contact created successfully" });
         }
+        [HttpPut("{contactId}")]
+        public async Task<IActionResult> UpdateContact(int contactId, [FromBody] CreateContactRequest request)
+        {
+            var contact = await _contactRepository.GetContactByIdAsync(contactId);
+            if (contact == null)
+            {
+                return NotFound(new { Message = "Contact not found" });
+            }
+            _mapper.Map(request, contact);
+            await _contactRepository.UpdateContactAsync(contact);
+            return Ok(new { Message = "Contact updated successfully" });
+
+        }
+
+
         private Guid? GetCurrentUserId()
         {
             var userIdString = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);

@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import LoginedLayout from "./layouts/LoginedLayout";
 import Contact from "./pages/Contact";
+import CreateContact from "./pages/CreateContact";
 const routeList: RouteObject[] = [
   {
     element: <RootLayout />,
@@ -27,8 +28,12 @@ const routeList: RouteObject[] = [
     element: <LoginedLayout />,
     children: [
       {
-        path: "/contact/:userId",
+        path: "/contacts/:userId",
         element: <Contact />,
+      },
+      {
+        path: "/contacts/create",
+        element: <CreateContact />,
       },
     ],
   },

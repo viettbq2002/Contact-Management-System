@@ -69,11 +69,15 @@ namespace ContactManagementApi.Controllers
             await _categoryRepository.DeleteCategoryAsync(categoryId);
             return Ok(new { Message = "Category deleted successfully" });
         }
-        [HttpPut("{categoryId}/contact/{contactId}")]
+        [HttpPut("{categoryId}/AddContact/{contactId}")]
         public async Task<IActionResult> AddContactToCategory(int categoryId, int contactId)
         {
             var contact = await _contactRepository.GetContactByIdAsync(contactId);
             var category = await _categoryRepository.GetCategoryByIdAsync(categoryId);
+            if (contact == null || category == null)
+            {
+                return NotFound(new { Message = "Contact or category not found" });
+            }
             category.Contacts.Add(contact);
             await _categoryRepository.UpdateCategoryAsync(category);
             return Ok(new { Message = "Contact added to category successfully" });
