@@ -19,4 +19,4 @@
 - CRUD Category, Add Contact to Category ✅
 - Authentication (Login, Logout, Register), JWT ✅
 - Profile ✅
-- Contact Filte Table (Search/Sort/Filter By) ✅ 
+- Contact Filte Table (Search/Sort/Filter By ..., Pagination) ✅ 
