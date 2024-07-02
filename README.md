@@ -2,8 +2,19 @@
 - NodeJS >= v20.10.0 (Tốt nhất là vào https://nodejs.org/en cài lại node js mới nhất để chạy frontend)
 - .NET6.0
 - Đảm bảo Project Backend chạy trên port *localhost:7158*
+- SQL Server
 # Hướng dẫn chạy
 ## 1. Chạy script Database
+Mở file script trong sql server rồi chạy
+Nếu tạo DB tên khác thì lưu ý phải sửa trong connection string lại
+
+## Sửa Connection String Trong Backend
+```
+Vào file appsetting.json sử dòng
+ "DefaultConnection": "Server=(local);uid=sa;pwd=123456;database=ContactManagment;TrustServerCertificate=true"
+password chỉnh cho giống password sql servrr trên local
+```
+
 ## 2. Chạy Backend
 1. `cd .\Backend\ContactManagementApi\`
 2. dotnet run
