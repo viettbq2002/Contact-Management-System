@@ -15,7 +15,7 @@
   *note:* Chạy lần `npm install` lần đầu các lần sau kh chỉ cần run dev
 
 # Features
-- CRUD Contact
+- CRUD Contact ✅
 - CRUD Category, Add Contact to Category ✅
 - Authentication (Login, Logout, Register), JWT ✅
 - Profile ✅
