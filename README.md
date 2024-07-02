@@ -24,7 +24,7 @@ password chỉnh cho giống password sql servrr trên local
 2. `npm install`
 3. `npm run dev`
   *note:* Chạy  `npm install` lần đầu các lần sau  chỉ cần run dev
-4. tài khoản đã có dữ liệu mẫu - username: string, password: string
+4. tài khoản đã có dữ liệu mẫu - `username: string`,` password: string`
 
 # Features
 - CRUD Contact ✅
