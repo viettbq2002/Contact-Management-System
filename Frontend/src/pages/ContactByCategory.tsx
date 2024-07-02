@@ -1,13 +1,13 @@
-import { Button, ComboboxData, ComboboxItem, Group, Modal, Select, SimpleGrid, Stack, Text, Title } from "@mantine/core";
+import { Button, Group, Modal, Select, SimpleGrid, Stack, Text, Title } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
+import { IconPlus, IconX } from "@tabler/icons-react";
+import { useQueryClient } from "@tanstack/react-query";
+import toast from "react-hot-toast";
+import { useNavigate, useParams } from "react-router-dom";
+import categoryApi from "../api/category-api";
 import ContactCard from "../components/ui/ContactCard";
 import useCategoryDetail from "../hooks/useCategoryDetail";
-import { IconCross, IconPlus, IconX } from "@tabler/icons-react";
-import { useDisclosure } from "@mantine/hooks";
-import useContact from "../hooks/useContact";
-import toast from "react-hot-toast";
-import categoryApi from "../api/category-api";
-import { useNavigate, useParams } from "react-router-dom";
-import { useQueryClient } from "@tanstack/react-query";
+import { useContactList } from "../hooks/useContact";
 
 const ContactByCategory = () => {
   const { data } = useCategoryDetail();
@@ -16,7 +16,7 @@ const ContactByCategory = () => {
   const { categoryId } = useParams();
   const [opened, handlers] = useDisclosure(false);
   const [deletedOpened, deleteHandlers] = useDisclosure(false);
-  const { data: contacts } = useContact();
+  const { data: contacts } = useContactList();
   const contactData = contacts || [];
   const filteredContacts = contactData.filter(
     (contact) => !data?.contacts.some((existingContact) => existingContact.contactId === contact.contactId)

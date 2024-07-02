@@ -33,9 +33,10 @@ namespace ContactManagementApi.Controllers
             return Ok(response);
         }
         [HttpGet("{contactId}/details")]
-        public async Task<IActionResult> GetContactById(int id)
+        public async Task<IActionResult> GetContactById(int contactId)
         {
-            var contact = await _contactRepository.GetContactByIdAsync(id);
+            var contact = await _contactRepository.GetContactByIdAsync(contactId);
+            if (contact == null) return NotFound(new { Message = "Contact not found" });
             return Ok(contact);
         }
         [HttpDelete("{contactId}")]

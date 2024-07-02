@@ -8,9 +8,7 @@ const ContactCard: React.FC<ContactCardProps> = ({ contact }) => {
   return (
     <Paper miw={rem(280)} shadow="md" radius={"md"} withBorder p="md">
       <Group wrap="nowrap">
-        <Avatar color="blue" size={60} radius="md">
-          {contact.fullName[0]}
-        </Avatar>
+        <Avatar color="initials" name={contact.fullName} size={60} radius="md" />
         <div>
           <Text fz="lg" fw={500}>
             {contact.fullName}

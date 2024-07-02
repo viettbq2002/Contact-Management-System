@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ContactByCategory from "./pages/ContactByCategory";
+import TableFilter from "./pages/TableFilter";
 const routeList: RouteObject[] = [
   {
     element: <RootLayout />,
@@ -34,6 +35,10 @@ const routeList: RouteObject[] = [
       {
         path: "/category/:categoryId",
         element: <ContactByCategory />,
+      },
+      {
+        path: "/table",
+        element: <TableFilter />,
       },
     ],
   },

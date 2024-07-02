@@ -1,5 +1,5 @@
 import { Button, Group } from "@mantine/core";
-import { Icon2fa, IconAddressBook, IconDatabaseImport, IconKey, IconLogout, IconSettings } from "@tabler/icons-react";
+import { IconAddressBook, IconLogout, IconSettings, IconTableAlias } from "@tabler/icons-react";
 import { Link, useNavigate } from "react-router-dom";
 import classes from "../../style/Sidebar.module.css";
 import NavLinkGroup from "./NavbarLinkGroup";
@@ -12,9 +12,7 @@ interface SidebarProps {
 export function Sidebar({ handleClose }: SidebarProps) {
   const data = [
     { link: `/contacts`, label: "All contacts", icon: IconAddressBook },
-    { link: "", label: "SSH Keys", icon: IconKey },
-    { link: "", label: "Databases", icon: IconDatabaseImport },
-    { link: "", label: "Authentication", icon: Icon2fa },
+    { link: "/table", label: "Advanced Filters", icon: IconTableAlias },
     { link: "", label: "Other Settings", icon: IconSettings },
   ];
   const navigate = useNavigate();

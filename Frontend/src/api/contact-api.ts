@@ -10,5 +10,9 @@ const contactApi = {
     const response = await http.post<Contact>("/contacts", contact);
     return response.data;
   },
+  getContact: async (contactId: number) => {
+    const response = await http.get<Contact>(`/contacts/${contactId}/details`);
+    return response.data;
+  },
 };
 export default contactApi;

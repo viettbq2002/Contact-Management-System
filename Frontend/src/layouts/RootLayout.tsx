@@ -1,10 +1,13 @@
 import { AppShell, Burger, Group, Image, Text, UnstyledButton } from "@mantine/core";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Navigate, Outlet } from "react-router-dom";
 import classes from "../style/Navbar.module.css";
 import { useDisclosure } from "@mantine/hooks";
+import { getUser } from "../utils/auth.utils";
 
 const RootLayout = () => {
   const [opened, { toggle }] = useDisclosure();
+  const user = getUser();
+  if (user) return <Navigate to={"/contacts"} />;
   return (
     <AppShell header={{ height: 60 }} navbar={{ width: 300, breakpoint: "sm", collapsed: { desktop: true, mobile: !opened } }} padding="md">
       <AppShell.Header>

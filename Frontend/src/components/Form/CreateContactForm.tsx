@@ -2,6 +2,9 @@ import { Button, Stack, Textarea, TextInput } from "@mantine/core";
 import { DatePickerInput } from "@mantine/dates";
 import { isNotEmpty, useForm } from "@mantine/form";
 import { ContactFormValue } from "../../types/contact.type";
+import contactApi from "../../api/contact-api";
+import toast from "react-hot-toast";
+import { useQueryClient } from "@tanstack/react-query";
 
 const CreateContactForm = () => {
   const form = useForm<ContactFormValue>({
@@ -15,8 +18,22 @@ const CreateContactForm = () => {
       phone: isNotEmpty("Please enter phone number"),
     },
   });
+  const queryClient = useQueryClient();
+  const handleSubmit = async (values: ContactFormValue) => {
+    toast.promise(
+      contactApi.createContact(values).then(() => {
+        form.reset();
+        queryClient.invalidateQueries({ queryKey: ["contact"] });
+      }),
+      {
+        error: "Failed to create contact",
+        loading: "Creating contact...",
+        success: "Contact created successfully",
+      }
+    );
+  };
   return (
-    <form onSubmit={form.onSubmit(console.log)}>
+    <form onSubmit={form.onSubmit(handleSubmit)}>
       <Stack gap="lg" w="100%">
         <TextInput
           key={form.key("fullName")}
