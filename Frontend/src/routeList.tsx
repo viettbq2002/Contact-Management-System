@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ContactByCategory from "./pages/ContactByCategory";
 import TableFilter from "./pages/TableFilter";
+import Profile from "./pages/Profile";
 const routeList: RouteObject[] = [
   {
     element: <RootLayout />,
@@ -39,6 +40,10 @@ const routeList: RouteObject[] = [
       {
         path: "/table",
         element: <TableFilter />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
     ],
   },

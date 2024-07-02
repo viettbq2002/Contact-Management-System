@@ -1,9 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
 import categoryApi from "../api/category-api";
 
-const useCategoryDetail = () => {
-  const { categoryId } = useParams();
+const useCategoryDetail = (categoryId: number) => {
   return useQuery({
     queryKey: ["category-detail", categoryId],
     staleTime: Infinity,

@@ -9,5 +9,5 @@ export type Category = {
 
 export type CategoryFormValue = {
   categoryName: string;
-  description: string;
+  description?: string;
 };

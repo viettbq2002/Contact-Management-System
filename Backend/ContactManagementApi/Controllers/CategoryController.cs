@@ -50,6 +50,18 @@ namespace ContactManagementApi.Controllers
             var resposne = _mapper.Map<CategoryResponse>(category);
             return Ok(resposne);
         }
+        [HttpPut("{categoryId}")]
+        public async Task<IActionResult> UpdateCategory(int categoryId, [FromBody] CreateCategoryRequest request)
+        {
+            var category = await _categoryRepository.GetCategoryByIdAsync(categoryId);
+            if (category == null)
+            {
+                return NotFound(new { Message = "Category not found" });
+            }
+            _mapper.Map(request, category);
+            await _categoryRepository.UpdateCategoryAsync(category);
+            return Ok(new { Message = "Category updated successfully" });
+        }
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryRequest request)

@@ -10,10 +10,10 @@ import useCategoryDetail from "../hooks/useCategoryDetail";
 import { useContactList } from "../hooks/useContact";
 
 const ContactByCategory = () => {
-  const { data } = useCategoryDetail();
+  const { categoryId } = useParams();
+  const { data } = useCategoryDetail(Number(categoryId));
   const queryClient = useQueryClient();
   const navigate = useNavigate();
-  const { categoryId } = useParams();
   const [opened, handlers] = useDisclosure(false);
   const [deletedOpened, deleteHandlers] = useDisclosure(false);
   const { data: contacts } = useContactList();

@@ -2,12 +2,14 @@ import { UnstyledButton, Group, Avatar, Text, rem } from "@mantine/core";
 import { IconChevronRight } from "@tabler/icons-react";
 import classes from "../../style/UserButton.module.css";
 import { getUser } from "../../utils/auth.utils";
+import { useNavigate } from "react-router-dom";
 
 export function UserButton() {
   const user = getUser();
+  const navigate = useNavigate();
 
   return (
-    <UnstyledButton className={classes.user}>
+    <UnstyledButton onClick={() => navigate("/profile")} className={classes.user}>
       <Group>
         <Avatar src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-8.png" radius="xl" />
 

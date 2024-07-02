@@ -7,7 +7,6 @@ const useCategoryMutate = () => {
   const queryClient = useQueryClient();
   const categoriesQueryKey = ["category"];
 
-  //   const categoryQueryKey = ["category-detail"];
   const createCategory = (category: CategoryFormValue) => {
     toast.promise(
       categoryApi.createCategory(category).then(() =>
@@ -22,7 +21,21 @@ const useCategoryMutate = () => {
       }
     );
   };
-  return { createCategory };
+  const editCategory = (categoryId: number, category: CategoryFormValue) => {
+    toast.promise(
+      categoryApi.updateCategory(categoryId, category).then(() =>
+        queryClient.invalidateQueries({
+          queryKey: categoriesQueryKey,
+        })
+      ),
+      {
+        loading: "Editing category...",
+        success: "Category edited successfully",
+        error: "Failed to edit category",
+      }
+    );
+  };
+  return { createCategory, editCategory };
 };
 
 export default useCategoryMutate;

@@ -6,6 +6,7 @@ import useCategory from "../../hooks/useCategory";
 import classes from "../../style/Sidebar.module.css";
 import AddCategoryForm from "../Form/AddCategoryForm";
 import { useState } from "react";
+import EditCategoryForm from "../Form/EditCategoryForm";
 
 const NavLinkGroup = () => {
   const [opened, { open, close }] = useDisclosure(false);
@@ -56,7 +57,9 @@ const NavLinkGroup = () => {
       <Modal opened={opened} onClose={close} title="Add Category">
         <AddCategoryForm />
       </Modal>
-      <Modal opened={openedEdit} onClose={openEditHandler.close} title="Edit Category"></Modal>
+      <Modal opened={openedEdit} onClose={openEditHandler.close} title="Edit Category">
+        <EditCategoryForm categoryId={Number(selectedCategory)} />
+      </Modal>
     </>
   );
 };

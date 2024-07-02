@@ -35,7 +35,7 @@ const Contact = () => {
         <CreateContactForm />
       </Modal>
       <Modal size="xl" title="Contact Detail" opened={contactOpend} onClose={contactClose}>
-        <ContactDetail contactId={selectedContact} />
+        <ContactDetail closeCallback={contactClose} contactId={selectedContact} />
       </Modal>
     </div>
   );
