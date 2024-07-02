@@ -30,7 +30,7 @@ password chỉnh cho giống password sql servrr trên local
 - CRUD Contact ✅
 - CRUD Category, Add Contact to Category ✅
 - Authentication (Login, Logout, Register), JWT ✅
-- Profile ✅
+- Profile,Edit Profile ✅
 - Contact Filte Table (Search/Sort/Filter By ..., Pagination) ✅
 
   ![image](https://github.com/viettbq2002/Contact-Management-System/assets/98259617/99e9d540-8ef6-4109-be87-4e603098a1ed)
