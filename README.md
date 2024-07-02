@@ -23,7 +23,7 @@ password chỉnh cho giống password sql servrr trên local
 1. `cd .\Frontend\`
 2. `npm install`
 3. `npm run dev`
-  *note:* Chạy lần `npm install` lần đầu các lần sau kh chỉ cần run dev
+  *note:* Chạy  `npm install` lần đầu các lần sau  chỉ cần run dev
 
 # Features
 - CRUD Contact ✅
