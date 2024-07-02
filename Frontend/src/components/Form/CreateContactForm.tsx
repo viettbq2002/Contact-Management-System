@@ -52,8 +52,8 @@ const CreateContactForm = () => {
           withAsterisk
         />
         <TextInput
-          key={form.key("company")}
-          {...form.getInputProps("company")}
+          key={form.key("companyName")}
+          {...form.getInputProps("companyName")}
           variant="filled"
           label="Company"
           description="optional"

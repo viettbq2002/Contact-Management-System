@@ -1,6 +1,6 @@
 import { Button, Group } from "@mantine/core";
 import { IconAddressBook, IconLogout, IconSettings, IconTableAlias } from "@tabler/icons-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import classes from "../../style/Sidebar.module.css";
 import NavLinkGroup from "./NavbarLinkGroup";
 import { UserButton } from "./UserButton";
@@ -9,16 +9,15 @@ interface SidebarProps {
   handleClose: () => void;
 }
 
-export function Sidebar({ handleClose }: SidebarProps) {
+export function Sidebar({ handleClose }: Readonly<SidebarProps>) {
   const data = [
     { link: `/contacts`, label: "All contacts", icon: IconAddressBook },
     { link: "/table", label: "Advanced Filters", icon: IconTableAlias },
     { link: "", label: "Other Settings", icon: IconSettings },
   ];
-  const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("authenticated");
-    navigate("/login");
+    window.location.href = "/";
   };
 
   const links = data.map((item) => (

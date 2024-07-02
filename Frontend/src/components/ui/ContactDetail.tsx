@@ -18,7 +18,7 @@ const ContactDetail: React.FC<ContactDetailProps> = ({ contactId, closeCallback 
   const handleDeleteContact = () => {
     toast.promise(
       contactApi.deleteContact(Number(contactId)).then(() => {
-        queryClient.invalidateQueries({ queryKey: ["contact", "category-detail"] });
+        queryClient.invalidateQueries({ queryKey: ["contact"] });
         deleteHandlers.close();
         closeCallback();
       }),
