@@ -23,5 +23,9 @@ const categoryApi = {
     const response = await http.post<Category>("/categories", category);
     return response.data;
   },
+  addContactToCategory: async (categoryId: number, contactId: number) => {
+    const response = await http.put<Category>(`/Categories/${categoryId}/AddContact/${contactId}`);
+    return response.data;
+  },
 };
 export default categoryApi;

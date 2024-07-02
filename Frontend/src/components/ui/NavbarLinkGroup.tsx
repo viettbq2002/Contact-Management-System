@@ -4,6 +4,7 @@ import { IconAddressBook, IconPlus } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 import useCategory from "../../hooks/useCategory";
 import classes from "../../style/Sidebar.module.css";
+import AddCategoryForm from "../Form/AddCategoryForm";
 
 const NavLinkGroup = () => {
   const [opened, { open, close }] = useDisclosure(false);
@@ -11,7 +12,14 @@ const NavLinkGroup = () => {
   const categories = data || [];
 
   const links = categories.map((category) => (
-    <NavLink fw="500" component={Link} to={`/category/${category.categoryId}`} label={category.categoryName} childrenOffset={28} />
+    <NavLink
+      key={category.categoryId}
+      fw="500"
+      component={Link}
+      to={`/category/${category.categoryId}`}
+      label={category.categoryName}
+      childrenOffset={28}
+    />
   ));
 
   return (
@@ -29,7 +37,7 @@ const NavLinkGroup = () => {
         />
       </NavLink>
       <Modal opened={opened} onClose={close} title="Authentication">
-        {/* Modal content */}
+        <AddCategoryForm />
       </Modal>
     </>
   );

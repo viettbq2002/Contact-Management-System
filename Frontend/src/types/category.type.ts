@@ -7,4 +7,7 @@ export type Category = {
   contacts: Contact[];
 };
 
-export type CategoryFormValue = Omit<Category, "categoryId">;
+export type CategoryFormValue = {
+  categoryName: string;
+  description: string;
+};

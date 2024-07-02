@@ -22,7 +22,7 @@ const LoginForm = () => {
       const response = await AuthApiRequest.login(payload);
       const { data } = response;
       localStorage.setItem("authenticated", JSON.stringify(data));
-      navigate(`/contacts/${data.id}`);
+      navigate(`/contacts/`);
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
